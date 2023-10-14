@@ -1,0 +1,124 @@
+{% load static %}
+<!-- Header -->
+<div class="d-flex flex-column flex-lg-row px-md-4 navbar sticky-top" style="background-color: #000060; transition: 1.0s">
+    <!-- MEDIUM+ SCREENS -->
+    <div class="d-none d-md-flex flex-row my-auto flex-grow-1 align-items-center " style="background-color: #000060; transition: 1.0s">
+        <h5 class="mt-1 mr-3 font-weight-normal justify-content-start p-2">
+            <img src="{% static 'logo/Logo.jpg'%}" class="account-image rounded-circle m-auto" alt="Logo" width="40" height="40">
+            <a class="text-white" style="text-decoration: none;font-weight: 400;font-size: 22px;" href="{% url 'store' %}">Badminton Lover</a>
+            <a class="text-white" style="text-decoration: none;font-weight: 325;margin-left: 5px;" href="{% url 'store' %}">Home</a>
+            <div class="btn-group dropright ml-2" style="margin-bottom: 6px;">
+                <h5 class="text-white m-auto d-block" id="toggler" data-toggle="dropdown" aria-expanded="false" style="text-decoration: none;font-weight: 325;margin-left: 5px;">Store</h5>
+                <div class="dropdown-menu" aria-labelledby="toggler">
+                    <a class="dropdown-item" href="{% url 'store:store1' 'Raquets' %}">Raquets</a>
+                    <a class="dropdown-item" href="{% url 'store:store1' 'Shoes' %}">Shoes</a>
+                    <a class="dropdown-item" href="{% url 'store:store1' 'Bags' %}">Bags</a>
+                    <a class="dropdown-item" href="{% url 'store:store1' 'Accessories' %}">Accessories</a>
+                    <a class="dropdown-item" href="{% url 'store:store1' 'T-shirts' %}">T-shirts</a>
+                    <a class="dropdown-item" href="{% url 'store:store1' 'Shorts' %}">Shorts</a>
+                    <a class="dropdown-item" href="{% url 'store:store1' 'Trackpants' %}">Track pants</a>
+                </div>
+            </div>
+        </h5>
+ 
+        <div class="d-flex flex-row-reverse flex-grow-1">
+            <nav class="">
+                {% if request.user.is_authenticated %}
+                <div class="dropdown dropleft show">
+                    <div class="d-flex flex-row">
+                        <div class="btn-group dropleft">
+                            <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{profile_image}}" alt="Logo" width="40" height="40">
+                            <div class="dropdown-menu" aria-labelledby="id_profile_links">
+                                <a class="dropdown-item" href="{% url 'account:view' user_id=request.user.id %}">Account</a>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                            </div>
+                        </div>
+                        <div id="cartIcon" class="form-inline ml-3 my-lg-0">
+                            <a href="{% url 'cart' %}">
+                                <i id="#cart-icon" style="color: #fff;" class="fas fa-shopping-cart"></i>
+                            </a>
+                            <p id="cart-total">{{cartItems}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="d-flex flex-row">
+                    <div class="btn-group dropleft">
+                        <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{% static 'default/profile_image.png' %}" alt="Logo" width="40" height="40">
+                        <div class="dropdown-menu" aria-labelledby="id_profile_links">
+                            <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                            <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                        </div>
+                    </div>
+                    <div id="cartIcon" class="form-inline ml-3 my-lg-0">
+                        <a href="{% url 'cart' %}">
+                            <i id="#cart-icon" style="color: #fff;" class="fas fa-shopping-cart"></i>
+                        </a>
+                        <p id="cart-total">{{cartItems}}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </nav>
+        </div>
+    </div>
+    <!-- END MEDIUM+ SCREENS -->
+    <!-- SMALL SCREENS -->
+    <div class="d-flex d-md-none flex-row my-auto align-items-center" style="background-color: #000060; transition: 1.0s">
+        <h5 class="mt-3 mr-3 font-weight-normal justify-content-start p-2">
+            <img src="{% static 'logo/Logo.jpg'%}" class="account-image rounded-circle m-auto" alt="Logo" width="35" height="35"/>
+            <a class="text-white" style="text-decoration: none;font-weight: 325;margin-left: 5px;" href="{% url 'store' %}">Home</a>
+            <div class="btn-group dropright ml-2" style="margin-bottom: 6px;">
+                <h5 class="text-white m-auto d-block" id="toggler" data-toggle="dropdown" aria-expanded="false" style="text-decoration: none;font-weight: 325;margin-left: 5px;">Store</h5>
+                <div class="dropdown-menu" aria-labelledby="toggler">
+                    <a class="dropdown-item" href="{% url 'store:store1' 'Raquets' %}">Raquets</a>
+                    <a class="dropdown-item" href="{% url 'store:store1' 'Shoes' %}">Shoes</a>
+                    <a class="dropdown-item" href="{% url 'store:store1' 'Bags' %}">Bags</a>
+                    <a class="dropdown-item" href="{% url 'store:store1' 'Accessories' %}">Accessories</a>
+                    <a class="dropdown-item" href="{% url 'store:store1' 'T-shirts' %}">T-shirts</a>
+                    <a class="dropdown-item" href="{% url 'store:store1' 'Shorts' %}">Shorts</a>
+                    <a class="dropdown-item" href="{% url 'store:store1' 'Trackpants' %}">Track pants</a>
+                </div>
+            </div>
+        </h5>
+        <div class="d-flex flex-row-reverse flex-grow-1">
+            <nav class="">
+                {% if request.user.is_authenticated %}
+                <div class="dropdown dropleft p-2 mt-2">
+                    <div class="d-flex flex-row">
+                        <div class="btn-group dropleft">
+                            <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{profile_image}}" alt="Logo" width="35" height="35">
+                            <div class="dropdown-menu" aria-labelledby="id_profile_links">
+                                <a class="dropdown-item" href="{% url 'account:view' user_id=request.user.id %}">Account</a>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                            </div>
+                        </div>
+                        <div id="cartIcon" class="form-inline ml-3 my-lg-0">
+                            <a href="{% url 'cart' %}">
+                                <i id="#cart-icon" style="color: #fff;" class="fas fa-shopping-cart"></i>
+                            </a>
+                            <p id="cart-total">{{cartItems}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="d-flex flex-row">
+                    <div class="btn-group dropleft">
+                        <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{% static 'default/profile_image.png' %}" alt="Logo" width="35" height="35">
+                        <div class="dropdown-menu" aria-labelledby="id_profile_links">
+                            <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                            <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                        </div>
+                    </div>
+                    <div id="cartIcon" class="form-inline ml-3 my-lg-0">
+                        <a href="{% url 'cart' %}">
+                            <i id="#cart-icon" style="color: #fff;" class="fas fa-shopping-cart"></i>
+                        </a>
+                        <p id="cart-total">{{cartItems}}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </nav>
+        </div>
+    </div>
+    <!-- END SMALL SCREENS -->
+</div>

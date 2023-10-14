@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Badminton Lover</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Welcome to the badminton lover website.Here, You can buy all badminton related products.Please don't forget to follow our youtube channel.">
+    <meta name="keywords" content="badminton, lover, website">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'cropperjs/dist/cropper.min.css' %}">
+    <link rel="icon" href="{% static 'logo/Logo.jpg' %}" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/11ca954a77.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/11.0.1/markdown-it.min.js" integrity="sha512-hW0KbtvDnXCHbh2UCNP/6R+oXxCKiOfm9ciuUekdGBCQF1+57bGqZAk3sAFir7PMQstyRW0UecsSc2HQotH2vg==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/default.min.css" integrity="sha512-kZqGbhf9JTB4bVJ0G8HCkqmaPcRgo88F0dneK30yku5Y/dep7CZfCnNml2Je/sY4lBoqoksXz4PtVXS4GHSUzQ==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/kotlin.min.js" integrity="sha512-8aYTnyDstX39PHxorDD+6ROknf98Vqr5KTOjwRCl/442uAVKOpCJ5wY9I3VQ6y46rdDJKYBIglIfE2+GQk8U5Q==" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+        function getToken(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getToken('csrftoken');
+        function getCookie(name) {
+            // Split cookie string and get all individual name=value pairs in an array
+            var cookieArr = document.cookie.split(";");
+            // Loop through the array elements
+            for (var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i].split("=");
+                /* Removing whitespace at the beginning of the cookie name
+                and compare it with the given string */
+                if (name == cookiePair[0].trim()) {
+                    // Decode the cookie value and return
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            // Return null if not found
+            return null;
+        }
+        var cart = JSON.parse(getCookie('cart'))
+        if (cart == undefined) {
+            cart = {}
+            console.log('Cart was created!')
+            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+        }
+        console.log('Cart:', cart)
+    </script>
+</head>
+<body style="background-color: #eee8ff;overflow-x: hidden;">
+    {% include 'store/snippets/header.html' %}
+    <div style="background-color: #000060; margin-bottom: 20px;" class="row">
+        <div class="col-lg-6 ratio ratio-16x9">
+            <iframe style="margin-left: 50px;padding:0;margin-top:20px;margin-bottom: 20px;" width="560" height="315" src="https://www.youtube.com/embed/doZAXNgTGZA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="col-lg-6">
+            <div class="jumbotron jumbotron-fluid" style="background-color: #000060">
+                <div class="container">
+                    <h1 class="display-4" style="color: #fff;">Welcome to Badminton Lover Website</h1>
+                    <p class="lead" style="color: #fff;">This is our Channel Website Viewers. Here, you will be able to buy badminton accessories at cheap prices. Please support our channel by subscribing to our youtube channel. Any future updates will be updated here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="card-deck">
+            <div style="background-color: dimgray;" class="card text-center text-white">
+                <div class="card-body">
+                    <h5 class="card-title text-white">Selective Products</h5>
+                    <p class="card-text">The products available in our website are selected based on price, quality, and reviews.We review every product's quality and provide you the best product.</p>
+                </div>
+            </div>
+            <div class="card text-center text-white bg-info">
+                <div class="card-body">
+                    <h5 class="card-title text-white">Best Prices</h5>
+                    <p class="card-text">All the products available in our website are provided at the cheapest prices available in the market to provide you the best offers.</p>
+                </div>
+            </div>
+            <div style="background-color: #e45f04;" class="card text-center text-white">
+                <div class="card-body">
+                    <h5 class="card-title text-white">All Categories</h5>
+                    <p class="card-text">We have all categories of Badminton accessories in our website,from raquets to shoes,provided at the best quality.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 35px; background-color: #000060;" class="jamb jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 style="color: #fff;" class="display-4">About</h1>
+            <p style="color: #fff;" class="lead">I am your badminton lover. This is the website of my youtube channel badminton lover.We also sell all the badminton accessories in our website from raquets to shoes. Please visit our <a style="color: #fff;" href="{% url 'store:store1' 'Raquets' %}">Store</a> to buy our products. Please subscribe!.
+        </div>
+    </div>
+    <form style="text-align: center;" method="POST">
+        {% csrf_token %}
+        <h2 style="margin-bottom: 20px;">Please help us Improve!</h2>
+        <input style="margin-bottom: 20px;margin-left: 5px;" class="form-control" type="text" name="field1" placeholder="Please provide your feedback..">
+        <button style="border-radius: 5px; color: #fff;background: #e45f04;width: 300px;height: 40px;font-size: 20px;">Submit</button>
+    </form>
+    <script type="text/javascript">
+        document.getElementById('cartIcon').classList.add("hidden");
+    </script>
+    {% include 'store/snippets/footer.html' %}
+</body>
+</html>
